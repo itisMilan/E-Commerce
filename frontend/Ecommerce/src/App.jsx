@@ -8,21 +8,26 @@ import ProductList from './pages/ProductList'
 import {
   BrowserRouter,
   Routes,
-  Route,
+  Route,Redirect
 } from "react-router-dom";
+// import { Redirect } from 'react-router';
+
 const App = () => {
+  const user = true;
   return (
    <BrowserRouter>
    <Routes>
     <Route path="/" element={<Home></Home>}>
       
     </Route>
+    <Route path="/products/:category" element={<ProductList></ProductList>}/>
    <Route path="/product/:id" element={<Product> </Product>}></Route>
-   <Route path="/login" element={<Login/>}></Route>
+   <Route path="/login" element={<Login/>}>
+    {/* {user ? <Redirect to="/"/>:<Login/>} */}
+   </Route>
    <Route path="/register" element={<Register/>}></Route>
    <Route path="/cart" element={<Cart> </Cart>}></Route>
 
-    <Route path="/products/:category" element={<ProductList></ProductList>}/>
    </Routes>
    </BrowserRouter> 
   );
